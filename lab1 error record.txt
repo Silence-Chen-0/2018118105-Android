@@ -1,0 +1,161 @@
+https://github.com/Silence-Chen-0/booksource.git
+
+sdk update sites
+
+enabled name android reposity url
+
+//9.21
+android sdk location should not contain whitespace, 
+as this can cause problems with the ndk tools
+解决办法https://blog.csdn.net/Liu68686868/article/details/79461872
+
+android与模拟器连接Genymotion
+https://jingyan.baidu.com/article/fc07f9897e8e0612ffe519a3.html
+“marketplace plugins are not loaded”解决方案
+https://www.cnblogs.com/HelloBigTable/p/10335129.html
+
+
+Gradle sync failed: Sync issues found 
+
+//21:35	Android Studio is using this JDK location:
+		D:\Android Studio\Android studio\jre
+		which is different to what Gradle uses by default:
+		D:\java se
+		Using different locations may spawn multiple Gradle daemons if
+		Gradle tasks are run from command line while using Android Studio.
+		More info...
+		Set Android Studio to use the same JDK as Gradle and sync project
+		Do not show this warning again
+21:35	Gradle sync failed (4 s 39 ms)
+21:35	NDK Resolution Outcome: Project settings: Gradle model version=5.4.1, NDK version is UNKNOWN
+解决方案 
+Android Studio和Gradle 没同步JDK、SDK、NDK所遇到的坑
+https://blog.csdn.net/qq_42315540/article/details/103793582
+
+//Android studio安装配置常见问题及其解决方案
+https://blog.csdn.net/fengltxx/article/details/52424768
+
+ERROR: This version of Android Studio cannot open this project, please retry with Android Studio 4.0 or newer.//更新版本4.0，原先3.5
+
+//9.23 : 9.26
+报错：
+Failed to resolve: com.android.support:appcompat-v7:24.2.1
+Add Google Maven repository and sync project
+Show in Project Structure dialog
+Affected Modules: app
+解决
+https://blog.csdn.net/fengltxx/article/details/52424768
+https://blog.csdn.net/mhl18820672087/article/details/78385361/
+错误代码：
+android {
+    compileSdkVersion 30  //24
+    buildToolsVersion "30.0.2"  //24.0.2
+    defaultConfig {
+        applicationId "com.example.helloworld"
+        minSdkVersion 15
+        targetSdkVersion 30  //24
+        versionCode 1
+        versionName "1.0"
+    }
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:24.2.1'    //修改
+    testImplementation 'junit:junit:4.13'
+}
+
+---->turn to warning--appcompat-v7:24.2.1'
+报错：
+obsolete dependency configuration found :compile
+[update compile to implementation]
+
+update newer version available : 25.3.1
+
+解决:
+https://blog.csdn.net/linxinfa/article/details/106480176
+
+更新成  25.3.1  还是报错
+
+Failed to resolve:问题的解决方法
+https://blog.csdn.net/qq_30442585/article/details/82713382
+https://blog.csdn.net/fevershen/article/details/52926896
+https://blog.csdn.net/peachs885090/article/details/103048555
+https://blog.csdn.net/MoLiao2046/article/details/78580293
+我 解决方法是：build.gradle-->repositories  加上 google()
+allprojects {
+    repositories {
+        jcenter()
+      //  google()
+    }
+}
+top-level build file where you can add configuration options common to all sub-projects/modules顶级构建文件，您可以在其中添加对所有子项目/模块通用的配置选项
+do refactor重构
+
+报错：libs warning
+obsolete dependency configuration found :compile [update compile to implementation]
+解决方案： https://blog.csdn.net/go_going/article/details/81077034
+
+sdk manager 闪退
+解决方案：https://blog.csdn.net/abc764725516/article/details/81904247
+https://blog.csdn.net/fl1623863129/article/details/72199816
+&安装库https://blog.csdn.net/linxinfa/article/details/106480176
+&原因https://blog.csdn.net/wang295689649/article/details/60960953
+&原因https://blog.csdn.net/fesdgasdgasdg/article/details/78376038
+
+
+provides android apk support
+
+
+0:00	Emulator: PANIC: Cannot find AVD system path. Please define ANDROID_SDK_ROOT
+0:00	Emulator: Process finished with exit code 1
+
+android studio 启动模拟器报错The emulator process for AVD Nexus_5X_API_22 was killed.
+https://bbs.csdn.net/topics/392424550?page=1
+https://blog.csdn.net/weixin_40408952/article/details/103842660
+
+
+//9.24.15.25
+Starting Gradle Daemon...
+Gradle Daemon started in 4 s 764 ms
+KotlinDslScriptsParameter(correlationId=107128249337300, scriptFiles=[]) => StandardKotlinDslScriptsModel(scripts=[], commonModel=CommonKotlinDslScriptModel(classPath=[], sourcePath=[], implicitImports=[]), dehydratedScriptModels={}) - took 0.015 secs
+
+CONFIGURE SUCCESSFUL in 25s
+
+//9.24.15.53运行之后
+Session 'app': Installation did not succeed.
+The application could not be installed: INSTALL_FAILED_OLDER_SDK
+09/24 15:48:50: Launching 'app' on Genymobile Google Pixel 3.
+Installation did not succeed.
+The application could not be installed: INSTALL_FAILED_OLDER_SDK
+
+List of apks:
+[0] 'E:\.Desktop\android\myhelloworld\app\build\outputs\apk\debug\app-debug.apk'
+The application's minSdkVersion is newer than the device API level.
+
+//9.24.16.46
+AAPT: error: resource android:attr/colorError not found.
+APT: error: style attribute 'android:attr/keyboardNavigationCluster' not found.
+
+//9.24.20.41
+@RunWith(AndroidJUnit4.class)
+cannot resolve symbol AndroidJUnit4
+
+cannot resolve symbol test
+unused import statement
+Android Studio集成测试无法解析符号AndroidJUnit4(Android Studio Integration test cannot resolve symbol AndroidJUnit4)
+
+
+解决方案https://blog.csdn.net/hadues/article/details/81603838
+invalidate caches/restart ---> 清空缓存/重启
+
+
+//9.24.10.57
+Load Settings：Cannot load settings from file 
+
+Gradle sync failed: Could not find method google() for arguments [] on repository container.
+	Consult IDE log for more details (Help | Show Log) (786 ms)
+
+Gradle sync failed: Could not find method implementation() for arguments [directory 'libs'] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+	Consult IDE log for more details (Help | Show Log) (724 ms)
+
