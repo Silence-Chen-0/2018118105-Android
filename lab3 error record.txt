@@ -1,0 +1,32 @@
+//2020.10.9.14.23
+node can be replaced by a textview with compound drawable
+
+image without contentdescription
+
+using left /right instead of start/end attributes
+
+
+——————1————————
+参考：https://www.cnblogs.com/androidsuperman/p/3581950.html
+https://blog.csdn.net/crazy1235/article/details/72526781
+https://blog.csdn.net/yuqing_1102/article/details/51610898		！
+
+第一个感叹号 是跟你说 让你把Imageview 和textview 结合起来 只用 textview 
+textview有个属性叫  android:drawable...(top/bottom/...) 这个是可以加图片的
+第二个是让你把字符串外化  就是在 string.xml中定义 然后引用.不要直接输入文字
+当xml布局文件中，出现两个紧挨着的 <ImageView /> <TextView />，IDE就会给出这样一个提示！意思就是可以通过一个 <TextView /> 控件，然后设置 compound drawable 属性来替代完成！减少布局层级，减少测量布局绘制的耗时~
+
+——————2————————
+参考：http://blog.sina.com.cn/s/blog_71f9299c0101a66w.html
+
+除了imageview组件会出现这一警告外，imagebutton也同样可能出现这一警告。而此时我们可以在该组件下添加这样一个属性-----android:contentDescription="@string/desc"，然后将对图片的文本描述添加到string.XML文档中。
+作用是可以确保图片组件可以提供一个文本描述。
+
+https://blog.csdn.net/qq_26585943/article/details/83146000
+
+
+——————3————————
+
+
+
+ps.都没解决 警告 ，但可运行。
