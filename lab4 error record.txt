@@ -1,0 +1,59 @@
+//2020.9.27
+Could not find method implementation() for arguments [directory 'libs'] on object of type org.gradle.api.internal.artifacts.dsl.dependencies.DefaultDependencyHandler.
+问题分析：此问题由于所使用的Gradle版本较低，如Gradle2.2.2，不支持implementation导致，需要替换为gradle2.2.2支持的compile。相应的如果报错找不到compile，可能因为Gradle高了，如3.0.1，不支持compile，需要替换为implementation或api引用。
+即Gradle2.2.2 支持compile
+Gradle3.0.1 支持implementation和api
+junit ---testImplementation
+
+
+//2020.10.9 13.04
+改了高版本distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
+位置C:\Users\粟米\.gradle\wrapper\dists\gradle-5.4.1-all也不行
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:24.2.1'
+    implementation 'com.android.support:recyclerview-v7:24.2.1'
+}
+
+如果您尝试检索的工件可以在存储库中找到，但没有“Maven POM”格式的元数据，则需要调整“metadataSources{。。。}存储库声明的。
+If the artifact you are trying to retrieve can be found in the repository but without metadata in 'Maven POM' format, you need to adjust the 'metadataSources { ... }' of the repository declaration.
+Required by:
+    project :
+
+参考解决
+https://blog.csdn.net/zengsidou/article/details/79797417
+https://blog.csdn.net/jokeYJW/article/details/101199432
+https://developer.android.google.cn/studio/releases/gradle-plugin
+https://www.jianshu.com/p/deafa586b6a7		!原理！
+
+
+——总结——
+1.对应的gradle版本和配置工具
+2.符合as的版本和相应引用
+3.google()，在buildscript { repositories { 和allprojects {
+
+
+!!!attention
+我改setting-build-gradle-gradle user home: 
+C:\Users\粟米\.gradle\caches\modules-2\files-2.1\com.android.tools.build\gradle
+原来默认的是C:\Users\粟米\.gradle
+
+///////https://blog.csdn.net/l460133921/article/details/83987351
+///////https://www.cnblogs.com/fanglongxiang/p/11401123.html
+///////https://blog.csdn.net/u012496940/article/details/49081151
+
+
+//10.3
+package com.example.helloworld;
+
+import android.content.Context;
+//import android.support.test.InstrumentationRegistry;
+//import android.support.test.runner.AndroidJUnit4;
+
+无法识别test.runner.AndroidJUnit4;
+|
+|
+连接-无法识别import android.test.ApplicationTestCase;——time:10.9
+！未解决，但可以运行。？？为什么啊？？
