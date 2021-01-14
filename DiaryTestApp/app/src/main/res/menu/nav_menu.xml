@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_personal"
+            android:icon="@drawable/nav_personal"
+            android:title="个人信息" />
+        <item
+            android:id="@+id/nav_likes"
+            android:icon="@drawable/nav_flag"
+            android:title="收藏夹" />
+        <item
+            android:id="@+id/nav_photos"
+            android:icon="@drawable/nav_img"
+            android:title="相册" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/nav_set"
+            android:title="设置" />
+        <!--夜间/个性装扮等
+            -->
+        <item
+            android:id="@+id/nav_non"
+            android:icon="@drawable/nav_ques"
+            android:title="问题" />
+    </group>
+</menu>

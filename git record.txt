@@ -1,0 +1,103 @@
+git@github.com:Silence-Chen-0/2018118105-Android.git
+
+https://github.com/Silence-Chen-0/2018118105-Android
+
+
+//删除分支error
+git -c diff.mnemonicprefix=false -c core.quotepath=false --no-optional-locks branch -d test1
+error: Cannot delete branch 'test1' checked out at 'E:/AndroidGit'
+https://my.oschina.net/zouxiangrd/blog/3217907
+
+
+//删远程仓库error
+https://www.jianshu.com/p/629fefe5468a
+the authenticity of host can't be established
+rsa key fingerprint is sha256:
+
+https://blog.csdn.net/wudinaniya/article/details/77508229
+https://blog.csdn.net/ligang2585116/article/details/71094887
+https://blog.csdn.net/wh710107079/article/details/103789947
+https://blog.csdn.net/weixin_38357164/article/details/103598155
+https://www.thinbug.com/q/50667772
+https://blog.csdn.net/java_android_man/article/details/78689830
+https://www.jianshu.com/p/6b5ed581b158
+
+
+//删除远程仓库文件夹
+解决方案
+https://www.zhihu.com/question/35634464
+git clone git@github.com:xxx/xxx.git
+
+https://blog.csdn.net/wudinaniya/article/details/77508229
+$ git --help                                      # 帮助命令
+$ git pull origin master                    # 将远程仓库里面的项目拉下来
+$ dir                                                # 查看有哪些文件夹
+
+$ git rm -r --cached target              # 删除target文件夹
+$ git commit -m '删除了target'        # 提交,添加操作说明
+$ git push -u origin master               # 将本次更改更新到github项目上去
+
+1.选分支 master
+2.git 里面书代码
+3.确认
+
+
+//回滚revert和reset区别+
+https://blog.csdn.net/qq8427003/article/details/64920987
+reset
+同样，假设有如下commit记录
+A <- B <- C <- D
+想删除到C(及C、D都不要了）
+git reset hash(B) --hard
+=====git reset 8cc3244 --hard======合并分支！
+
+//Git撤销&回滚操作
+https://blog.csdn.net/ligang2585116/article/details/71094887
+
+
+cd 实验报告1-6
+cd E:\AndroidGit
+
+
+
+
+
+
+//2021.1.5
+Pushing to https://github.com/Silence-Chen-0/2018118105-Android.git
+To https://github.com/Silence-Chen-0/2018118105-Android.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/Silence-Chen-0/2018118105-Android.git'
+
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+————https://blog.csdn.net/qq15577969/article/details/107618389
+原因分析：
+是由于本地和远程仓库两者代码文件不同步，因此需要先pull，进行合并然后再进行push
+解决方法：//没用
+1、先使用pull命令：git pull --rebase origin master
+2、再使用push命令：git push -u origin master
+
+
+先看git reset 的3种方式: 
+git reset --soft [commit哈希值]
+git reset --mixed [commit哈希值]
+git reset --hard [commit哈希值]
+情景分析：
+假如现在 未修改之前的commit 哈希值 为 123.
+我们做了修改，并add .和commit了，这个时候看不到我们的改动记录了。commit哈希值为 456
+此时突然发现还有新的修改，而不想再次commit。想撤销456回到123，并保留改动的记录，该怎么办。
+这个时候我们可以用：git reset --mixed 123
+就可以回到123了，并保留了所有改动记录,此时git status会有所有改动的记录为红色。
+而用git reset --soft 123
+也会回到123，也会保存改动的记录，不过会自动帮你 git add . 用git status查看是绿色。
+而用git reset --hard 123
+也会回到123，不过不会保留任何你改动的记录（慎用）
+
+1、分支备份
+2、分支回退到指定版本
+git reset --hard revision_number
+3、强制推送到远端代码，回滚到某一节点
+git push -f origin branch_name
+4、重新拉取分支代码，然后重新提交代码。
